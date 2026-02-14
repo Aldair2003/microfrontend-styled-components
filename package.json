@@ -1,0 +1,24 @@
+{
+  "name": "techcorp-portal",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm run build:all",
+    "build:all": "pnpm run build:main && pnpm run build:products && pnpm run build:users && pnpm run build:purchases",
+    "build:main": "cd main && pnpm run build",
+    "build:products": "cd moduleProducts && pnpm run build",
+    "build:users": "cd moduleUser && pnpm run build",
+    "build:purchases": "cd modulePurchases && pnpm run build",
+    "install:all": "pnpm install && cd main && pnpm install && cd ../moduleProducts && pnpm install && cd ../moduleUser && pnpm install && cd ../modulePurchases && pnpm install",
+    "dev": "pnpm run dev:all",
+    "dev:all": "concurrently \"pnpm run dev:main\" \"pnpm run dev:products\" \"pnpm run dev:users\" \"pnpm run dev:purchases\"",
+    "dev:main": "cd main && pnpm run dev",
+    "dev:products": "cd moduleProducts && pnpm run dev",
+    "dev:users": "cd moduleUser && pnpm run dev",
+    "dev:purchases": "cd modulePurchases && pnpm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3"
+  }
+}

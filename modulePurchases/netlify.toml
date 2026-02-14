@@ -1,0 +1,19 @@
+# Configuración de Netlify para el módulo de compras
+
+[build]
+  command = "pnpm install && cross-env NODE_ENV=production pnpm run build"
+  publish = "dist"
+
+# SPA redirects
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers para Module Federation
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "X-Requested-With, Content-Type, Authorization"
